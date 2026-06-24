@@ -27,11 +27,21 @@ def load_data():
 rf, le, importance = load_artifacts()
 df = load_data()
 
+@st.cache_data
+def load_rf_accuracy():
+    with open("results.txt") as f:
+        for line in f:
+            if line.startswith("Random Forest"):
+                return float(line.strip().split(":")[1]) * 100
+    return None
+
+rf_accuracy = load_rf_accuracy()
+
 st.title("🎵 Spotify Genre Classifier")
 st.caption(
     "Predicts a song's genre from its raw audio features. "
     "Trained on ~28k tracks (TidyTuesday Spotify dataset) with a Random Forest classifier "
-    "— 57% accuracy across 6 genres (random baseline: ~17%)."
+    f"— {rf_accuracy:.1f}% accuracy across 6 genres (random baseline: ~17%)."
 )
 
 tab1, tab2 = st.tabs(["🔮 Predict a Genre", "📊 What the Model Learned"])
