@@ -2,7 +2,7 @@
 
 Predicts a song's genre from its raw audio features (danceability, energy, tempo, valence, etc.) using models trained on ~28k real Spotify tracks.
 
-**[Live demo →](#)** *(add your deployed Streamlit URL here)*
+**[Live demo →](https://nishant-spotify-genre.streamlit.app)*
 
 ## Background
 
